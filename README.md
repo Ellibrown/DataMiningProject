@@ -12,7 +12,8 @@ Term: Spring 2026
 
 ## Project Goal
 
-The goal of this project is to collect and analyze data from an online source (API or web scraping) in order to answer a research question relevant to political or social science.
+The goal of this project is to collect and analyze data from an online source (API or 
+web scraping) in order to answer a research question relevant to political or social science.
 
 The project should demonstrate:
 
@@ -80,3 +81,4 @@ fixed JSON parsing
 
 Large datasets should not be pushed to GitHub.  
 If necessary, provide instructions for downloading the data instead.
+

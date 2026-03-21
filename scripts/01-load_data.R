@@ -13,8 +13,9 @@ saveRDS(median_income, "data_raw/raw_median_income.rds")
 
 # filter and save MBM threshold data
 mbm_thresholds_filtered <- mbm_thresholds %>%
-  filter(REF_DATE == 2023 & Component == "Total threshold") %>%
-  select(REF_DATE, GEO, `Dollar concept`, Component, VALUE)
+  filter(REF_DATE == 2023 & Component == "Total threshold" & `Base year`=="2023 base") %>%
+  select(REF_DATE, GEO, `Dollar concept`, Component, VALUE) %>%
+  filter(`Dollar concept` == "Current dollars")
 
 saveRDS(mbm_thresholds_filtered, "data_preprocessed/filtered_mbm_thresholds.rds")
 

@@ -14,7 +14,7 @@ whitehorse_living_wage <- readRDS("data_raw/whitehorse_living_wage_2023.rds") %>
 national_living_wages <- national_living_wages %>%
   add_row(`City/Region` = "Whitehorse", Prov = "YT", `2023` = whitehorse_living_wage)
 
-# change from monthly to annual figures
+# change from monthly to annual figures and filter to current dollars only
 
 national_living_wages <- national_living_wages %>%
   mutate(`annual_LW` = `2023` * 35 * 52 * 2)
@@ -35,6 +35,6 @@ quebec_viable_wages = read_csv("data_raw/data-FGcxc.csv") %>%
 
 # save Quebec viable wages
 
-saveRDS(quebec_living_wages, "data_preprocessed/clean_quebec_viable_wages.rds")
+saveRDS(quebec_viable_wages, "data_preprocessed/clean_quebec_viable_wages.rds")
 
 

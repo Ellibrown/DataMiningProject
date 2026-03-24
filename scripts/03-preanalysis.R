@@ -7,5 +7,34 @@ combined_df <- national_living_wages %>%
   left_join(mbm_thresholds, by = "mbm_region") %>%
   left_join(median_incomes, by = "median_income_region") %>%
   select(lw_region, Prov, mbm_region, median_income_region, annual_LW, mbm_value, median_income) %>%
-  drop_na() 
+  drop_na() %>%
+  unite("region_name", lw_region, Prov, sep = ", ", remove = FALSE) %>%
+  # correct misspelled region name
+  mutate(region_name = replace(region_name, region_name == "Grand Prairie, AB", "Grande Prairie, AB"))
+
+# save combined table
+saveRDS(combined_df, "data_preprocessed/combined_df.rds")
+
+# create table version without vague geographies
+combined_df_specifics <- national_living_wages %>% 
+  left_join(lookup_table, by = c("lw_region" = "lw_region")) %>%
+  left_join(mbm_thresholds, by = "mbm_region") %>%
+  left_join(median_incomes, by = "median_income_region") %>%
+  select(lw_region, Prov, mbm_region, median_income_region, annual_LW, mbm_value, median_income) %>%
+  drop_na() %>%
+  unite("region_name", lw_region, Prov, sep = ", ", remove = FALSE) %>%
+  # refine selected region names
+  mutate(region_name = replace(
+    region_name, region_name == "Grand Prairie, AB", "Grande Prairie, AB"))%>%
+  mutate(region_name = replace(
+    region_name, region_name == "Metro Vancouver, BC", "Vancouver, BC"))%>%
+  mutate(region_name = replace(
+    region_name, region_name == "GTA, ON", "Toronto, ON"))%>%
+  mutate(region_name = replace(
+    region_name, region_name == "Dufferin Guelph Wellington Waterloo, ON", "Dufferin/Waterloo, ON"))%>%
+  mutate(region_name = replace(
+    region_name, region_name == "London Elgin Oxford, ON", "London/Elgin, ON"))%>%
+  # remove rows with vague geographies
+  filter(!str_detect(median_income_region, "Non CMA-CA"))
+
 

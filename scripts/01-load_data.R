@@ -12,20 +12,24 @@ median_income <- get_cansim("11-10-0008-01")
 saveRDS(median_income, "data_raw/raw_median_income.rds")
 
 # filter and save MBM threshold data
-mbm_thresholds_filtered <- mbm_thresholds %>%
+mbm_thresholds_filtered <- raw_mbm_thresholds %>%
   filter(REF_DATE == 2023 & Component == "Total threshold" & `Base year`=="2023 base") %>%
   select(REF_DATE, GEO, `Dollar concept`, Component, VALUE) %>%
-  filter(`Dollar concept` == "Current dollars")
+  filter(`Dollar concept` == "Current dollars")%>%
+  rename(`mbm_region` = `GEO`) %>%
+  rename(`mbm_value` = VALUE)
 
-saveRDS(mbm_thresholds_filtered, "data_preprocessed/filtered_mbm_thresholds.rds")
+saveRDS(mbm_thresholds_filtered, "data_preprocessed/mbm_thresholds.rds")
 
 # filter and save median income data
-median_income_filtered <- median_income %>%
-  filter(REF_DATE == 2023 & `Persons with income` == "Median total income") %>%
+median_income_filtered <- raw_median_income %>%
+  filter(REF_DATE == 2023 & `Persons with income` == "Median total income" 
+         & `Sex` == "Both sexes" & `Age group` == "All age groups") %>%
   select(REF_DATE, GEO, VALUE) %>%
-  rename(`Median total income` = VALUE)
+  rename(`median_income` = VALUE) %>%
+  rename(`median_income_region` = `GEO`)
 
-saveRDS(median_income_filtered, "data_preprocessed/filtered_median_income.rds")
+saveRDS(median_income_filtered, "data_preprocessed/median_incomes.rds")
 
 # scrape national living wage table
 

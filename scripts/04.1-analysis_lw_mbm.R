@@ -12,7 +12,6 @@ ggplot(combined_df, aes(y = reorder(region_name, lw_mbm_gap))) +
                    yend = region_name), color = "#b2b2b2", size = 1) +
   geom_point(aes(x = mbm_value), color = "#E05A5A", size = 2) +
   geom_point(aes(x = annual_LW), color = "#3A7FC1", size = 2) +
-  # Styling
   theme_minimal() +
   labs(title = lw_mbm_title,
        subtitle = "Ordered by size of gap between metrics",

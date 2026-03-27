@@ -12,9 +12,9 @@ ggplot(combined_df, aes(x = median_income, y = annual_LW)) +
   geom_hline(yintercept = my, 
              linetype = "dashed", color = "red") +
   theme_minimal() +
-  labs(title = "Relative Affordability Quadrants",
+  labs(title = "Relative Affordability Quadrants, 2023",
        subtitle = 
-         "Comparing annual median income to annual living wage across Canadian regions
+         "Comparing median incomes to living wages across Canadian regions
        (dashed lines represent averages)",
        x = "Median Income ($)",
        y = "Living Wage ($)") +
@@ -54,13 +54,18 @@ ratio_df_1 <- combined_df %>%
 
 ggplot(ratio_df_1, aes(x = lw_mi_ratio)) + 
   geom_histogram(fill = "steelblue", color = "white") +
-  labs(title = "Affordability: Single Income Household",
+  labs(title = "Affordability Across Regions, 2023",
+       subtitle = "Single median income vs. family of four living wage",
        y = "Number of Regions",
-       x = "Affordability Ratio (Median Income / Living Wage)")
+       x = "Affordability Ratio (Median Income / Living Wage)") +
+  geom_vline(xintercept = 1, linetype = "dashed", color = "red", size = 1) +
+  annotate("text", x = 1.05, y = 5, label = "Breakeven (Income = Cost)", 
+           color = "red", angle = 90, vjust = -0.5)
+  
 
 ggsave("assets/lw_mi_histogram.png", 
        plot = last_plot(),
-       width = 5,
+       width = 7,
        height = 5, 
        units = "in", 
        dpi = 300,  

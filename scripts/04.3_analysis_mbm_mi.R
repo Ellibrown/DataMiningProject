@@ -87,4 +87,3 @@ summary_mbm_mi <- ratio_df_2 %>%
   )
 
 print(summary_mbm_mi)
-

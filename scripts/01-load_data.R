@@ -1,8 +1,9 @@
-# install and load packages
+# load packages
 library(tidyverse)
 library(cansim)
 library(rvest)
 library(pdftools)
+library(jsonlite)
 
 # load and save StatCan data
 mbm_thresholds <- get_cansim("11-10-0066-01")
@@ -31,29 +32,30 @@ median_income_filtered <- raw_median_income %>%
 
 saveRDS(median_income_filtered, "data_preprocessed/median_incomes.rds")
 
-# scrape national living wage table
-
-library(jsonlite)
-library(tidyverse)
+# scrape and save national living wage table
 
 hidden_data_url <- "https://datawrapper.dwcdn.net/FXpvY/31/dataset.csv" 
-
 living_wages <- read_csv(hidden_data_url)
 
-# save national living wage table
 saveRDS(living_wages, "data_raw/raw_living_wages.rds")
 
 # scrape and save Yukon living wage
 
-# 1. Define the URL
 pdf_url <- "https://yapc.ca/assets/documents/Living_Wage_in_Whitehorse_2023_-_Infographic.pdf"
-
-# 2. Extract text from the PDF
 raw_text <- pdftools::pdf_text(pdf_url)
-
-# 3. Use Regex to find the pattern "$x.xx/hr" 
 living_wage_match <- str_extract(raw_text, "\\$\\d+\\.\\d{2}/hr")
 
-# 4. save the value
 saveRDS(living_wage_match, file = "data_raw/whitehorse_living_wage_2023.rds")
 
+# clean and save Quebec viable wages (imported csv data manually)
+
+quebec_living_wages = read_csv("data_raw/data-FGcxc.csv") %>%
+  select(`lw_region`= 1, Raw_Value = `Revenu viable`) %>%
+  mutate(
+    Clean_Value = str_remove_all(Raw_Value, "[^0-9]"),
+    `annual_LW` = as.numeric(Clean_Value),
+    Prov = "QC"
+  ) %>%
+  select(`lw_region`, Prov, `annual_LW`)
+
+saveRDS(quebec_living_wages, "data_preprocessed/quebec_living_wages.rds")

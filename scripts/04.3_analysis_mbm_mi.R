@@ -1,6 +1,6 @@
 library(patchwork)
 
-# scatter plot with quadrant analysis - lw vs median income
+# scatter plot with quadrant analysis - mbm vs median income
 
 mx <- mean(combined_df$median_income)
 my <- mean(combined_df$mbm_value)
@@ -40,7 +40,7 @@ ggsave("assets/mbm_mi_scatter_plot.png",
        dpi = 300,  
        bg = "white")
 
-# calculate lw / mi correlation
+# calculate mbm / mi correlation
 spearman_test_mbm_mi <- cor.test(combined_df$median_income, 
                                  combined_df$mbm_value, 
                                  method = "spearman", exact = FALSE)

@@ -1,4 +1,4 @@
-# Create a manual mapping of your Living Wage cities to MBM regions
+# manual mapping of Living Wage cities to MBM regions
 lookup_table <- tribble(
   ~lw_region,           ~mbm_region,                               ~median_income_region,
   "Brooks",          "Alberta, population under 30,000",            "Brooks, Alberta",

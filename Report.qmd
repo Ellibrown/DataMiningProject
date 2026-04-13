@@ -38,19 +38,32 @@ Region names were not standardized across the various data sources, so a signifi
 
 The analysis began by examining each pairing of the three variables separately. A dumbbell plot comparing the living wage to the Market Basket Measure shows that the living wage is higher than the MBM across all studied regions, though the size of this difference varies considerably, from \$5,545.60 in Brandon, Manitoba to \$44,084.40 in Clayoquot Sound, British Columbia.
 
+![](assets/lw_mbm_dumbbell_plot.png)
+
 The living wage was then compared to the median income. Since the living wage reflects the cost of living for a family of four while the median income reflects individual earnings, they are not directly comparable in absolute terms, but investigating trends in their relationship is still worthwhile. A scatter plot with quadrant analysis was created to identify regions with potentially higher or lower cost of living stress, with quadrant dividers drawn at the mean value of each variable. The plot reveals that low median incomes and high living wages is the most frequent quadrant, suggesting prevalent cost of living difficulties.
+
+![](assets/lw_mi_scatter_plot.png)
 
 A Spearman's correlation test between median incomes and living wages returns -0.36 with a p-value under 0.0002, a weak to moderate correlation indicating that as median incomes increase in the dataset, living wages have a slight tendency to decrease. This is a somewhat counterintuitive finding, suggesting that lower cost of living areas may have somewhat higher median incomes.
 
 Dividing the median income by the living wage produces an affordability ratio that reveals whether a single median earner can afford to support a family of four at the living wage standard of living. A histogram of this ratio shows that none of the regions in the dataset have a median income high enough to do so. The average affordability ratio is 0.577, meaning the median earner can on average afford 57.7% of a family of four's living wage cost of living. Comparing 2x the median income to the living wage, to represent a theoretical dual income household, yields an average affordability ratio of 1.15, with 31% of regions falling below 1.0. This means that in 31% of studied regions, two median earners together cannot afford a family of four cost of living according to the living wage.
 
+![](assets/lw_mi_histogram.png)
+
 The Market Basket Measure was then compared to the median income using the same approaches. In contrast to the living wage analysis, the scatter plot shows that the lower left quadrant (low median incomes and low cost of living) is the most frequent, which makes sense given that MBM values are all lower than living wages. The upper left quadrant is much less prevalent in this plot, pointing to lower affordability stress overall. This highlights how consequential the choice of metric is when quantifying affordability.
 
+![](assets/mbm_mi_scatter_plot.png)
+
 A histogram of the median income/MBM affordability ratio reveals that a few outlier communities have a ratio above 1.0. The average ratio across regions is 0.853, and 95.1% of regions have a ratio below 1.0, meaning a single median earner cannot afford a family of four cost of living at the poverty line in the vast majority of studied regions. The theoretical dual income household, however, can afford the family of four cost of living across all regions in the dataset, with an average dual earner affordability ratio of 1.7.
+
+![](assets/mbm_mi_histogram.png)
 
 **Multivariate Analysis**
 
 A dumbbell plot comparing all three variables reveals that the gaps between them vary considerably across regions. To further explore the relationship between the two cost of living metrics and median income, the living wage to MBM ratio was calculated, capturing the gap between a poverty-line standard of living and the higher standard reflected by the living wage. A higher ratio indicates a larger gap, which could mean that costs beyond basic survival are particularly high in a given community, or that advocacy organizations have reached substantially different results from Statistics Canada in their calculations. This ratio has a correlation coefficient of -0.456 with a p-value of 1.477e-06, indicating a statistically significant moderate negative correlation with median income. As median income increases, the relative gap between the living wage and Market Basket Measure tends to decrease, suggesting that lower-income regions may face more significant barriers to reaching a living wage standard of living. Spearman's correlation was used to ensure robust results in the presence of outliers.
+
+![](assets/multivariate_dumbbell_plot.png)
+![](assets/multivariate_scatter_plot.png)
 
 **Discussion**
 

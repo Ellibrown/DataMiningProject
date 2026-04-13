@@ -1,4 +1,4 @@
-# Data Mining Project Template
+# Data Mining Project
 
 This repository contains the code for a small data mining project developed as part of the course:
 
@@ -25,27 +25,37 @@ The project should demonstrate:
 
 ## Research Question
 
-*(Replace with your own question)*
-
-Example:
-- How frequently do political speeches contain populist rhetoric?
-
+*How do cost of living metrics vary across Canadian regions, and how does this variation relate to differences in median incomes?*
 
 ## Data Source
 
-Describe the data source here.
+I used four data sources. 
 
-Example:
+Median income and Market Basket Measure:
+- API: https://www.statcan.gc.ca/en/microdata/api
+- Access method: cansim R package
 
-- API: https://example-api.com
-- Documentation: https://example-api.com/docs
-- Access method: HTTP GET requests
+National living wages:
+- Webpage: https://www.livingwage.ca/rates
+- Access method: scraped datawrapper csv
+
+Yukon living wage:
+- Online PDF: https://yapc.ca/assets/documents/Living_Wage_in_Whitehorse_2023_-_Infographic.pdf
+- Access method: manually extracted data from online PDF
+
+Quebec living wage:
+- https://iris-recherche.qc.ca/publications/revenu-viable-2023/
+- Access method: manually uploaded csv to project (website blocked scraping)
 
 
 ## Repository Structure
 
-/code     scripts used to collect/process data
-/data     output datasets (not tracked/pushed by git)
+/scripts     scripts used to collect/process data
+/assets      saved data visualizations
+/data_raw    raw data files
+/data_preprocessed  cleaned and prepared data files
+Report.qmd   R Markdown report with analysis and visualizations
+Report.pdf   rendered PDF report
 README.md   project description
 
 
@@ -55,30 +65,7 @@ To reproduce this project:
 
 1. Clone the repository
 2. Install required R packages
-3. Run the scripts in the `code/` folder
+3. Run the scripts in the `/scripts` folder
 
 All data should be generated automatically by the scripts.
-
-
-## Good Practices
-
-Please follow these guidelines:
-
-- Do **not upload raw datasets** to GitHub.
-- Store **API keys outside the repository** (e.g., environment variables).
-- Write scripts that run **from start to finish**.
-- Commit your work **frequently**.
-- Use **clear commit messages**.
-
-Example commit messages:
-added API request
-cleaned dataset structure
-added visualization
-fixed JSON parsing
-
-
-## Notes
-
-Large datasets should not be pushed to GitHub.  
-If necessary, provide instructions for downloading the data instead.
 

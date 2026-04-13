@@ -27,8 +27,15 @@ national_living_wages <- national_living_wages %>%
 
 # add Quebec living wages to national table
 
+national_living_wages <- bind_rows(
+  national_living_wages,
+  readRDS("data_preprocessed/quebec_living_wages.rds")
+)
+
+# avoid duplicated rows
+
 national_living_wages <- national_living_wages %>%
-  bind_rows(`national_living_wages`, readRDS("data_preprocessed/quebec_living_wages.rds"))
+  distinct()
 
 # save national living wage table
 saveRDS(national_living_wages, "data_preprocessed/national_living_wages.rds")

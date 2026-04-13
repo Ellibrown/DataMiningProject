@@ -1,8 +1,14 @@
 library(ggrepel)
 library(ggtext)
 library(scales)
+library(tidyverse)
+
+# load dataframe
+
+combined_df <- readRDS("data_preprocessed/combined_df.rds")
 
 # define title for dumbell plot
+
 lw_mbm_title <- "<span style='color:#E05A5A;'>Market Basket Measure</span> vs. 
              <span style='color:#3A7FC1;'>Living Wage</span> by Canadian Region, 2023"
 

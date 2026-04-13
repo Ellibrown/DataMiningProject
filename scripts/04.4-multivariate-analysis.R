@@ -1,3 +1,9 @@
+library(tidyverse)
+
+# load dataframe
+
+combined_df <- readRDS("data_preprocessed/combined_df.rds")
+
 # calculate lw-mbm ratio and mi-lw gap
 
 combined_df <- combined_df %>%

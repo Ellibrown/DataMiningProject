@@ -1,4 +1,9 @@
 library(patchwork)
+library(tidyverse)
+
+# load dataframe
+
+combined_df <- readRDS("data_preprocessed/combined_df.rds")
 
 # scatter plot with quadrant analysis - mbm vs median income
 

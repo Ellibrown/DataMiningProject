@@ -13,7 +13,7 @@ combined_df <- combined_df %>%
 
 # scatter plot: lw/mbm ratio vs median income
 ggplot(combined_df, aes(x = median_income, y = lw_mbm_ratio)) +
-  geom_point(color = "#377eb8", size = 2) +
+  geom_point(color = "#377eb8", linewidth = 2) +
   theme_minimal() +
   labs(title = "Living Wage to MBM Ratio vs. Median Income",
        x = "Median Income ($)",
@@ -45,10 +45,10 @@ ggplot(combined_df, aes(y = reorder(region_name, mi_lw_gap))) +
   geom_segment(aes(x = median_income, 
                    xend = annual_LW, 
                    yend = region_name), 
-                   color = "#b2b2b2", size = 1.5) +
-  geom_point(aes(x = mbm_value), color = "#E05A5A", size = 2) +
-  geom_point(aes(x = annual_LW), color = "#3A7FC1", size = 2) +
-  geom_point(aes(x = median_income), color = "#2E8B57", size = 2) +
+                   color = "#b2b2b2", linewidth = 1.5) +
+  geom_point(aes(x = mbm_value), color = "#E05A5A", linewidth = 2) +
+  geom_point(aes(x = annual_LW), color = "#3A7FC1", linewidth = 2) +
+  geom_point(aes(x = median_income), color = "#2E8B57", linewidth = 2) +
   theme_minimal() +
   labs(title = multivariate_title,
        subtitle = "Comparing individual median income vs. family of four living wage vs. family of

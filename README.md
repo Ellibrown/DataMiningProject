@@ -50,13 +50,13 @@ Quebec living wage:
 
 ## Repository Structure
 
-/scripts     scripts used to collect/process data
-/assets      saved data visualizations
-/data_raw    raw data files
-/data_preprocessed  cleaned and prepared data files
-Report.qmd   R Markdown report with analysis and visualizations
-Report.pdf   rendered PDF report
-README.md   project description
+- /scripts — data collection, cleaning, and analysis scripts  
+- /assets — saved data visualizations  
+- /data_raw — raw data files  
+- /data_preprocessed — cleaned and prepared data files  
+- Report.qmd — R Markdown report with analysis and visualizations  
+- Report.pdf — rendered PDF report  
+- README.md — project description  
 
 
 ## Reproducibility
